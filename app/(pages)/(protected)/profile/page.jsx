@@ -1,8 +1,7 @@
 "use client"
-import Post from "@/components/Post";
-import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
 import authService from "@/services/appwrite";
+import Link from "next/link";
 
 export default function Home() {
   const [user, setUser] = useState(null);

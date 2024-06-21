@@ -9,6 +9,7 @@ import useAuth from '@/context/useAuth'
 // import Link from 'next/link'
 
 const RegisterPage = () => {
+  const router = useRouter()
 
   const { authStatus } = useAuth();
 
@@ -19,7 +20,6 @@ const RegisterPage = () => {
 
   const { register, handleSubmit } = useForm()
   
-  const router = useRouter()
   // const [formData, setFormData] = useState({
   //   email: '',
   //   password: '',

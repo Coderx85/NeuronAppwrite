@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import authService from "@/services/appwrite";
 import { AuthProvider } from "@/context/authContext";
 
-const ProtectedLayout = ({children}) => {
+const Provider = ({children}) => {
 
   const [authStatus, setAuthStatus] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -27,4 +27,4 @@ const ProtectedLayout = ({children}) => {
   );
 }
 
-export default ProtectedLayout;
+export default Provider;
