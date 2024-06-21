@@ -1,4 +1,3 @@
-import Router from "next/router";
 import config from "../config/config";
 import { Client, Account, ID } from "appwrite";
 
@@ -16,6 +15,17 @@ export class AuthService {
       .setEndpoint(appwriteUrl)
       .setProject(appwriteProjectId);
     this.account = new Account(this.client);
+  }
+
+  async isLoggedIn() {
+    try {
+      const data = await this.getCurrentUser();
+      console.log("Appwrite serive :: isLoggedIn :: data", data); 
+      return Boolean(data);
+    } catch (error) {
+      console.log("Appwrite serive :: isLoggedIn :: error", error);
+    }
+    return false;
   }
 
   async createAccount({ email, password, name }) {
@@ -37,7 +47,8 @@ export class AuthService {
   async login({ email, password }) {
     try {
       const user = await this.account.createEmailPasswordSession(email, password);
-      console.log("Appwrite serive :: login :: user", user);     
+      console.log("Appwrite serive :: login :: user", user);
+      // throw new Error("Invalid email or password");     
     } catch (error) {
       console.log("Appwrite serive :: createAccount :: error", error);
       throw error;
